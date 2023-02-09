@@ -1,0 +1,22 @@
+.mark-node-list-drawer-title {
+  display: flex;
+  justify-content: space-between;
+}
+
+.mark-node-list-btns {
+  display: flex;
+  gap: 1rem;
+}
+
+.mark-node-list-title {
+  color: rgba(0, 0, 0, 0.85);
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 22px;
+  display: flex;
+  align-items: center;
+  font-size: 16px;
+  line-height: 22px;
+  padding: 16px 24px;
+  border-bottom: 1px solid rgb(240, 240, 240);
+}
