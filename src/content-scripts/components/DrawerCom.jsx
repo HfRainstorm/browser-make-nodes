@@ -13,17 +13,6 @@ export default class DrawerCom extends Component {
     };
   }
 
-  // Background 通讯
-  async sendMsgToBackground() {
-    const res = await contentClient.seedMessage(
-      new ChromeMessage("test connect")
-    );
-
-    this.setState({
-      messageFromBg: res.msg,
-    });
-  }
-
   render() {
     return (
       <Drawer
@@ -40,10 +29,6 @@ export default class DrawerCom extends Component {
         visible
       >
         <MarkShow showTitle={false} />
-        <Button type="primary" onClick={() => this.sendMsgToBackground()}>
-          点击和 background 通讯
-        </Button>
-        <p>{this.state.messageFromBg}</p>
       </Drawer>
     );
   }

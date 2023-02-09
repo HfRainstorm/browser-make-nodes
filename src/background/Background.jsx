@@ -42,9 +42,5 @@ export default class Background {
   }
 
   // 初始化消息通道
-  initMessageClient() {
-    backgroundClient.listen("test connect", (res, sendResponse) => {
-      sendResponse(new ChromeMessage("connect success"));
-    });
-  }
+  initMessageClient() {}
 }
