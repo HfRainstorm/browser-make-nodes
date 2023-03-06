@@ -48,24 +48,28 @@ export default class MarkShow extends Component {
         {markList &&
           markList.map((markInfo, index) => {
             return (
-              <div id={index} style={{ paddingBottom: "1rem" }}>
+              <div
+                id={index}
+                key={markInfo.id}
+                style={{ paddingBottom: "1rem" }}
+              >
                 <Card
                   title={markInfo.name}
                   bordered={false}
                   hoverable
                   extra={
                     <a
-                      tabindex="0"
-                      class="ant-notification-notice-close"
+                      tabIndex={markInfo.id}
+                      className="ant-notification-notice-close"
                       onClick={() => {
                         this.deleteMarkRecord(markInfo.id);
                       }}
                     >
-                      <span class="ant-notification-close-x">
+                      <span className="ant-notification-close-x">
                         <span
                           role="img"
                           aria-label="close"
-                          class="anticon anticon-close ant-notification-close-icon"
+                          className="anticon anticon-close ant-notification-close-icon"
                         >
                           <svg
                             viewBox="64 64 896 896"

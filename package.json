@@ -1,7 +1,7 @@
 {
   "name": "browser-make-nodes",
   "version": "1.0.0",
-  "description": "Make nodes for webpage by right menu. see detail: https://github.com/HfRainstorm/browser-make-nodes",
+  "description": "Make nodes for webpage by right menu. see details: https://github.com/HfRainstorm/browser-make-nodes",
   "author": "Mengyu Han",
   "scripts": {
     "start": "webpack serve --config ./config/webpack.dev.js",

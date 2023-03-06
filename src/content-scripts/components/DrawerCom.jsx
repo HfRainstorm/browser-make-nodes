@@ -26,7 +26,7 @@ export default class DrawerCom extends Component {
         onClose={() => {
           this.props.onClose();
         }}
-        visible
+        open={this.props.open}
       >
         <MarkShow showTitle={false} />
       </Drawer>

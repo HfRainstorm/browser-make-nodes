@@ -1,29 +1,14 @@
 {
   "manifest_version": 3,
   "name": "browser-make-nodes",
-  "description": "Make nodes for browser page",
+  "description": "Make nodes for browser page.   code: https://github.com/HfRainstorm/browser-make-nodes",
   "version": "1.0",
-  "developer": {
-    "name": "Mengyu Han",
-    "url": "https://github.com/HfRainstorm/browser-make-nodes",
-    "email": "hmy_hammer@163.com"
-  },
   "icons": {
     "16": "icons/logo.png",
     "48": "icons/logo.png",
     "128": "icons/logo.png"
   },
-
-  "permissions": [
-    "contextMenus",
-    "tabs",
-    "activeTab",
-    "storage",
-    "background",
-    "tabCapture",
-    "scripting",
-    "notifications"
-  ],
+  "permissions": ["contextMenus", "tabs", "activeTab", "storage", "background"],
 
   "host_permissions": ["<all_urls>"],
 
@@ -51,7 +36,5 @@
       "resources": ["images/*", "js/common.js"],
       "matches": ["<all_urls>"]
     }
-  ],
-
-  "minimum_chrome_version": "5"
+  ]
 }

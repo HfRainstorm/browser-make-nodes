@@ -6,44 +6,49 @@ import DrawerCom from "./components";
 
 import { getMarkStr } from "../common";
 
-export default class ContentScripts {
-  constructor() {
-    this.container = null;
+export default class ContentScripts extends React.Component {
+  constructor(props) {
+    super(props);
+    this.comContaioner = null;
     this.init();
+    this.state = {
+      drawerOpen: false,
+    };
   }
 
-  init() {
+  init = () => {
     // 注意，必须设置了run_at=document_start 此段代码才会生效
 
-    document.addEventListener("DOMContentLoaded", () => {
-      this.initContainer();
-      this.initMessageClient();
-    });
+    // document.addEventListener("DOMContentLoaded", () => {
+    this.initContainer();
+    this.initMessageClient();
+    // });
 
     this.initGlobalFunc();
-  }
+  };
 
-  initGlobalFunc() {
+  initGlobalFunc = () => {
     // window.getMarkStr = getMarkStr;
     // window.syncSetStorage = syncSetStorage;
     // window.syncGetStorage = syncGetStorage;
-  }
+  };
 
   // 初始化消息通道
-  initMessageClient() {
-    const { container } = this;
+  initMessageClient = () => {
+    // const { container } = this;
 
     contentClient.listen("showCoplit", () => {
       this.showContainer();
 
-      render(
-        <DrawerCom
-          onClose={() => {
-            this.hideContainer();
-          }}
-        />,
-        container
-      );
+      // render(
+      //   <DrawerCom
+      //     onClose={() => {
+      //       this.hideContainer();
+      //     }}
+      //     open={this.state.drawerOpen}
+      //   />,
+      //   container
+      // );
     });
     contentClient.listen("saveMark", (res, sendResponse) => {
       let mark = getMarkStr();
@@ -56,32 +61,46 @@ export default class ContentScripts {
         });
       }
     });
-  }
+  };
 
   // 初始化外层包裹元素
-  initContainer() {
+  initContainer = () => {
     const { document } = window;
-    const base = document.querySelector(
-      "#chrome-extension-content-base-elemen"
+    this.comContainer = document.getElementById(
+      "chrome-extension-content-base-elemen"
     );
-    if (base) {
-      this.container = base;
-    } else {
-      this.container = document.createElement("div");
-      this.container.setAttribute(
-        "id",
-        "chrome-browser-make-nodes-base-element"
-      );
-      this.container.setAttribute("class", WRAPPER_CLASS_NAME);
-      document.body.appendChild(this.container);
-    }
-  }
+  };
 
-  showContainer() {
-    this.container.setAttribute("style", "display: block");
-  }
+  showContainer = () => {
+    debugger;
+    document
+      .getElementById("chrome-browser-make-nodes-base-element")
+      .setAttribute("style", "display: block");
+    debugger;
+    this.setState({
+      drawerOpen: true,
+    });
+  };
 
-  hideContainer() {
-    this.container.setAttribute("style", "display: none");
+  hideContainer = () => {
+    document
+      .getElementById("chrome-browser-make-nodes-base-element")
+      .setAttribute("style", "display: none");
+    this.setState({
+      drawerOpen: false,
+    });
+  };
+
+  render() {
+    return (
+      <div id="chrome-browser-make-nodes-base-element-content">
+        <DrawerCom
+          onClose={() => {
+            this.hideContainer();
+          }}
+          open={this.state.drawerOpen}
+        />
+      </div>
+    );
   }
 }
